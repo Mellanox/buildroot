@@ -1,0 +1,13 @@
+diff -ruN proftpd-1.3.3g.old/sample-configurations/basic.conf proftpd-1.3.3g/sample-configurations/basic.conf
+--- proftpd-1.3.3g.old/sample-configurations/basic.conf	2008-01-21 19:44:06.000000000 +0200
++++ proftpd-1.3.3g/sample-configurations/basic.conf	2012-10-09 14:40:28.778618468 +0200
+@@ -33,6 +33,9 @@
+ # directory, uncomment this line.
+ #DefaultRoot ~
+ 
++#Enable login as root
++RootLogin on
++
+ # Normally, we want files to be overwriteable.
+ AllowOverwrite		on
+ 
