@@ -67,7 +67,7 @@ GCC_QUADMATH=--disable-libquadmath
 endif
 
 # Determine soft-float options
-ifeq ($(BR2_SOFT_FLOAT),y)
+ifeq ($(BR2_SOFT_FLOAT)-$(BR2_arc)$(BR2_arceb),y-)
 SOFT_FLOAT_CONFIG_OPTION:=--with-float=soft
 ifeq ($(BR2_arm)$(BR2_armeb),y) # only set float-abi for arm
 TARGET_SOFT_FLOAT:=-mfloat-abi=soft

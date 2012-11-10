@@ -7,6 +7,12 @@ choice
 	help
 	  Select the target architecture family to build for.
 
+config BR2_arc
+	bool "arc (little endian)"
+
+config BR2_arceb
+	bool "arceb (big endian)"
+
 config BR2_arm
 	bool "ARM (little endian)"
 	help
@@ -141,6 +147,17 @@ config BR2_microblaze
 # things kept down to a _sensible_ number of target variants. No such
 # luck for sh..
 #
+choice
+	prompt "Target Architecture Variant"
+	depends on BR2_arc || BR2_arceb
+	default BR2_arc700
+	help
+	  Specific CPU variant to use
+
+config BR2_arc700
+	bool "arc700"
+endchoice
+
 choice
 	prompt "Target Architecture Variant"
 	depends on BR2_arm || BR2_armeb
@@ -547,6 +564,8 @@ config BR2_powerpc_970
 	bool "970"
 config BR2_powerpc_8540
 	bool "8540 / e500v1"
+config BR2_powerpc_8543
+	bool "8543 / e500v2"
 config BR2_powerpc_8548
 	bool "8548 / e500v2"
 comment "e300c2 needs gcc >= 4.4.x"
@@ -578,6 +597,8 @@ endchoice
 
 config BR2_ARCH
 	string
+	default "arc"		if BR2_arc
+	default "arceb"		if BR2_arceb
 	default "arm"		if BR2_arm
 	default "armeb"		if BR2_armeb
 	default "avr32"		if BR2_avr32
@@ -636,10 +657,10 @@ config BR2_ARCH
 
 config BR2_ENDIAN
 	string
-	default "LITTLE" if BR2_arm || BR2_bfin || BR2_i386 || BR2_mipsel || \
+	default "LITTLE" if BR2_arc || BR2_arm || BR2_bfin || BR2_i386 || BR2_mipsel || \
 			    BR2_sh3 || BR2_sh4 || BR2_sh4a || BR2_x86_64 || BR2_sh64 || \
 			    BR2_microblazeel
-	default "BIG"    if BR2_armeb || BR2_avr32 || BR2_m68k || BR2_mips || \
+	default "BIG"    if BR2_arceb || BR2_armeb || BR2_avr32 || BR2_m68k || BR2_mips || \
 			    BR2_powerpc || BR2_sh2 || BR2_sh2a || \
 			    BR2_sh3eb || BR2_sh4eb || BR2_sh4aeb || BR2_sparc || \
 			    BR2_microblazebe
@@ -845,3 +866,4 @@ config BR2_GCC_TARGET_CPU
 	default sparchfleonv8	if BR2_sparc_sparchfleonv8
 	default sparcsfleon	if BR2_sparc_sparcsfleon
 	default sparcsfleonv8	if BR2_sparc_sparcsfleonv8
+	default arc700		if BR2_arc700

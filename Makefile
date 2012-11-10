@@ -224,6 +224,7 @@ endif
 
 KERNEL_ARCH:=$(shell echo "$(ARCH)" | sed -e "s/-.*//" \
 	-e s/i.86/i386/ -e s/sun4u/sparc64/ \
+	-e s/arc.*/arc/ \
 	-e s/arm.*/arm/ -e s/sa110/arm/ \
 	-e s/bfin/blackfin/ \
 	-e s/parisc64/parisc/ \
