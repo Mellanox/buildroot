@@ -14,5 +14,7 @@ ifeq ($(ARCH),arm)
 GMP_MAKE_OPT += CFLAGS="$(TARGET_CFLAGS) -marm"
 endif
 
+HOST_GMP_CONF_OPT=-disable-shared
+
 $(eval $(call AUTOTARGETS))
 $(eval $(call AUTOTARGETS,host))

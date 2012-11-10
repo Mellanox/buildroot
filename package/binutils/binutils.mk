@@ -45,6 +45,7 @@ HOST_BINUTILS_CONF_OPT = --disable-multilib --disable-werror \
 			--with-sysroot=$(STAGING_DIR) \
 			$(BINUTILS_EXTRA_CONFIG_OPTIONS)
 
+HOST_BINUTILS_MAKE_OPT=LDFLAGS=-static-libtool-libs
 HOST_BINUTILS_DEPENDENCIES =
 
 # We just want libbfd and libiberty, not the full-blown binutils in staging
