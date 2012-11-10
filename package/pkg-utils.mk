@@ -72,9 +72,8 @@ INFLATE.xz   = $(XZCAT)
 INFLATE.tar  = cat
 
 # MESSAGE Macro -- display a message in bold type
-MESSAGE = echo "$(TERM_BOLD)>>> $($(PKG)_NAME) $($(PKG)_VERSION) $(1)$(TERM_RESET)"
-TERM_BOLD := $(shell tput smso)
-TERM_RESET := $(shell tput rmso)
+MESSAGE_DELIM=*************************************************
+MESSAGE = echo -e "$(MESSAGE_DELIM) \n $($(PKG)_NAME) $($(PKG)_VERSION) $(1)\n$(MESSAGE_DELIM)"
 
 
 # Needed for the foreach loops to loop over the list of hooks, so that
