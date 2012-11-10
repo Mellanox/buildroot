@@ -4,7 +4,7 @@
 #
 #############################################################
 
-STRACE_VERSION = 4.5.20
+STRACE_VERSION = 4.7
 STRACE_SOURCE = strace-$(STRACE_VERSION).tar.bz2
 STRACE_SITE = http://$(BR2_SOURCEFORGE_MIRROR).dl.sourceforge.net/sourceforge/strace
 
