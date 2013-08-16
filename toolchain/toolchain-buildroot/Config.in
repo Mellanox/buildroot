@@ -41,6 +41,10 @@ config BR2_TOOLCHAIN_BUILDROOT_LIBC
 	default "uclibc" if BR2_TOOLCHAIN_BUILDROOT_UCLIBC
 	default "eglibc" if BR2_TOOLCHAIN_BUILDROOT_EGLIBC
 
+config BR2_TOOLCHAIN_BUILDROOT_VENDOR
+	string "custom buildroot toolchain vendor name"
+	default "buildroot"
+
 source "package/uclibc/Config.in"
 
 source "package/binutils/Config.in.host"
