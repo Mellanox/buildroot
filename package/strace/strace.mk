@@ -10,6 +10,8 @@ STRACE_SITE = http://downloads.sourceforge.net/project/strace/strace/$(STRACE_VE
 STRACE_LICENSE = BSD-3c
 STRACE_LICENSE_FILES = COPYING
 
+STRACE_AUTORECONF = YES
+
 STRACE_CONF_ENV = ac_cv_header_linux_if_packet_h=yes \
 		  ac_cv_header_linux_netlink_h=yes
 
