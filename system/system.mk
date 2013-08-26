@@ -57,10 +57,12 @@ TARGETS += target-generic-issue
 endif
 
 ifeq ($(BR2_ROOTFS_SKELETON_DEFAULT),y)
+ifeq ($(BR2_arc),)
 TARGETS += target-root-passwd
 
 ifneq ($(TARGET_GENERIC_GETTY),)
 TARGETS += target-generic-getty-$(if $(BR2_PACKAGE_SYSVINIT),sysvinit,busybox)
+endif
 endif
 
 ifeq ($(BR2_TARGET_GENERIC_REMOUNT_ROOTFS_RW),y)
