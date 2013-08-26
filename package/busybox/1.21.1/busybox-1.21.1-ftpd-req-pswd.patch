@@ -1,0 +1,26 @@
+diff -uprN busybox-1.21.1.orig/networking/ftpd.c busybox-1.21.1/networking/ftpd.c
+--- busybox-1.21.1.orig/networking/ftpd.c	2013-08-30 08:38:49.749797161 +0300
++++ busybox-1.21.1/networking/ftpd.c	2013-08-30 07:51:28.762784326 +0300
+@@ -98,7 +98,7 @@ enum {
+ 	| (('0' + ((s) / 100 % 10)) << SHIFT2) \
+ )
+ 
+-#define MSG_OK "Operation successful\r\n"
++#define MSG_OK "Transfer complete\r\n"
+ #define MSG_ERR "Error\r\n"
+ 
+ struct globals {
+@@ -1273,11 +1273,11 @@ int ftpd_main(int argc UNUSED_PARAM, cha
+ 		}
+ 		else if (cmdval == const_USER)
+ 			/* This would mean "ok, now give me PASS". */
+-			/*WRITE_OK(FTP_GIVEPWORD);*/
++			WRITE_OK(FTP_GIVEPWORD);
+ 			/* vsftpd can be configured to not require that,
+ 			 * and this also saves one roundtrip:
+ 			 */
+-			WRITE_OK(FTP_LOGINOK);
++			/*WRITE_OK(FTP_LOGINOK);*/
+ 		else if (cmdval == const_PASS)
+ 			WRITE_OK(FTP_LOGINOK);
+ 		else if (cmdval == const_NOOP)
