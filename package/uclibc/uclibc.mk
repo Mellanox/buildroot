@@ -388,6 +388,8 @@ endif
 #
 
 ifeq ($(BR2_STRIP_none),y)
+UCLIBC_STRIP_CONFIG = $(call UCLIBC_OPT_UNSET,DOSTRIP,$(@D))
+else
 UCLIBC_STRIP_CONFIG = $(call UCLIBC_OPT_SET,DOSTRIP,y,$(@D))
 endif
 
