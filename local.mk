@@ -9,4 +9,5 @@ UCLIBC_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/uClibc-nps
 STRACE_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/strace-nps
 LINUX_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/linux-nps
 LINUX_HEADERS_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/linux-nps
+UBOOT_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/uboot-nps
 endif
