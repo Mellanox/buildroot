@@ -11,3 +11,8 @@ LINUX_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/linux-nps
 LINUX_HEADERS_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/linux-nps
 UBOOT_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/uboot-nps
 endif
+
+ifeq ($(BR2_powerpc),y)
+LINUX_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/linux-host-nps
+UBOOT_OVERRIDE_SRCDIR = $(TOPDIR)/../sources/uboot-host-nps
+endif
