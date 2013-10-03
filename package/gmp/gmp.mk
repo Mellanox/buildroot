@@ -12,5 +12,7 @@ GMP_LICENSE = LGPLv3+
 GMP_LICENSE_FILES = COPYING.LIB
 GMP_DEPENDENCIES = host-m4
 
+HOST_GMP_CONF_OPT = --disable-shared
+
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))

@@ -13,5 +13,7 @@ MPC_DEPENDENCIES = gmp mpfr
 MPC_AUTORECONF = YES
 HOST_MPC_AUTORECONF = YES
 
+HOST_MPC_CONF_OPT = --disable-shared
+
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))
