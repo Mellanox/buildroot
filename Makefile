@@ -51,6 +51,9 @@ export BR2_VERSION := 2016.08
 # Save running make version since it's clobbered by the make package
 RUNNING_MAKE_VERSION := $(MAKE_VERSION)
 
+# EZchip buildroot extra version
+EZCHIP_VERSION = EZchip_1.1
+
 # Check for minimal make version (note: this check will break at make 10.x)
 MIN_MAKE_VERSION = 3.81
 ifneq ($(firstword $(sort $(RUNNING_MAKE_VERSION) $(MIN_MAKE_VERSION))),$(MIN_MAKE_VERSION))
@@ -1005,7 +1008,7 @@ release:
 	rm -rf $(OUT) $(OUT).tar
 
 print-version:
-	@echo $(BR2_VERSION_FULL)
+	@echo $(BR2_VERSION_FULL).$(EZCHIP_VERSION)
 
 include docs/manual/manual.mk
 -include $(BR2_EXTERNAL)/docs/*/*.mk
