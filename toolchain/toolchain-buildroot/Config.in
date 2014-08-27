@@ -18,6 +18,14 @@ config BR2_TOOLCHAIN_BUILDROOT_VENDOR
 
 	  If you're not sure, just leave the default "buildroot" value.
 
+config BR2_TOOLCHAIN_BUILDROOT_STATIC
+	bool "static toolchain"
+	help
+	 This option builds toolchain and gdb with static libraries
+	 of mpc,mpfr,gmp, and expat.
+	 It enables one to copy the toolchain around to a different directory
+	 and even to another machine.
+
 source "package/linux-headers/Config.in.host"
 
 choice

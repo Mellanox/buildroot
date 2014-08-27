@@ -19,5 +19,9 @@ ifeq ($(BR2_m68k_cf)$(BR2_mips_32r6)$(BR2_mips_64r6)$(BR2_ARM_CPU_ARMV7M)$(BR2_a
 GMP_CONF_OPTS += --disable-assembly
 endif
 
+ifeq ($(BR2_TOOLCHAIN_BUILDROOT_STATIC),y)
+HOST_GMP_CONF_OPTS = --disable-shared
+endif
+
 $(eval $(autotools-package))
 $(eval $(host-autotools-package))
