@@ -13,3 +13,5 @@ sha512  eeed3e2018b8c012aabce419e8d718fde701e5c3c179b4486c61ba46e5736eecc8fccdd1
 
 # Locally calculated (fetched from Github)
 sha512  a788737022c178a1e7704e4ecd3438937f2239bf27fd487db2b00e4bb5c6604535842e4d6798f120488bdbf0b226fa9c94f4b8aede4ce9d20b0add6bcec82927  gcc-arc-2016.09-eng010.tar.gz
+
+none  xxx  gcc-arc-2015.06-ezchip.tar.gz

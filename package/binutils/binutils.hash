@@ -5,3 +5,5 @@ sha512  9d9165609fd3b0f20d616f9891fc8e2b466eb13e2bfce40125e12427f8f201d20e2b8322
 
 # Locally calculated (fetched from Github)
 sha512  32d2f04ec62ee0491fd711baf7e6f28052170b1fa4cb8f6046ca4709e03250335a65b362295c13c7c44f8a28d91d2c54b0ab7c8f0f2e2324ea8ba2c80cbee29a  binutils-arc-2016.09-eng010.tar.gz
+
+none   xxx                                                               binutils-arc-2015.06-ezchip.tar.gz
