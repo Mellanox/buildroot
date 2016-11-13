@@ -1,0 +1,42 @@
+From de615faa601adba0864fe943fdf54868f3d9bd0c Mon Sep 17 00:00:00 2001
+From: Liav Rehana <liavr@mellanox.com>
+Date: Tue, 1 Nov 2016 08:07:35 +0200
+Subject: [PATCH 4/4] tools/env: Add include of stdint.h when MTD_OLD is not defined.
+
+The source file fw_env.c uses the types uint8_t and uint32_t frequently.
+It indirectly accesses their definition through the include of the header
+mtd/mtd-user.h, which in turn includes the header stdint.h, where the
+above types are defined. In the newer kernel versions, though, the header
+mtd/mtd-user.h does not include the header stdint.h anymore, so the
+compiler does not recognize the uint8_t and uint32_t types.
+The following commit moves up the include of stdint.h to affect cases
+where MTD_OLD is not defined to fix this issue.
+
+Change-Id: I69b27f2f6ad1323777c108091ad2f3f6f03a2af5
+Signed-off-by: Liav Rehana <liavr@mellanox.com>
+---
+ tools/env/fw_env.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/tools/env/fw_env.c b/tools/env/fw_env.c
+index 1173eea..20791d1 100644
+--- a/tools/env/fw_env.c
++++ b/tools/env/fw_env.c
+@@ -16,13 +16,13 @@
+ #include <stdlib.h>
+ #include <stddef.h>
+ #include <string.h>
++#include <stdint.h>
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+ #ifdef MTD_OLD
+-# include <stdint.h>
+ # include <linux/mtd/mtd.h>
+ #else
+ # define  __user	/* nothing */
+-- 
+1.7.1
+
