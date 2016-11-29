@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-UCLIBC_VERSION = 1.0.17
-UCLIBC_SOURCE = uClibc-ng-$(UCLIBC_VERSION).tar.xz
+UCLIBC_VERSION = arc-2015.06-ezchip
+UCLIBC_SOURCE = uClibc-$(UCLIBC_VERSION).tar.xz
 UCLIBC_SITE = http://downloads.uclibc-ng.org/releases/$(UCLIBC_VERSION)
 UCLIBC_LICENSE = LGPLv2.1+
 UCLIBC_LICENSE_FILES = COPYING.LIB
