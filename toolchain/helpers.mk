@@ -105,7 +105,7 @@ copy_toolchain_sysroot = \
 	ARCH_SUBDIR="$(strip $3)"; \
 	ARCH_LIB_DIR="$(strip $4)" ; \
 	SUPPORT_LIB_DIR="$(strip $5)" ; \
-	for i in etc $${ARCH_LIB_DIR} sbin usr usr/$${ARCH_LIB_DIR}; do \
+	for i in etc lib $${ARCH_LIB_DIR} sbin usr usr/$${ARCH_LIB_DIR}; do \
 		if [ ! -d $${ARCH_SYSROOT_DIR}/$$i ] ; then \
 			continue ; \
 		fi ; \
@@ -120,9 +120,13 @@ copy_toolchain_sysroot = \
 	done ; \
 	relpath="$(call relpath_prefix,$${ARCH_LIB_DIR})" ; \
 	if [ "$${relpath}" != "" ]; then \
-		for i in $$(find -H $(STAGING_DIR)/$${ARCH_LIB_DIR} $(STAGING_DIR)/usr/$${ARCH_LIB_DIR} -type l -xtype l); do \
+		for i in $$(find -H $(STAGING_DIR)/lib $(STAGING_DIR)/$${ARCH_LIB_DIR} $(STAGING_DIR)/usr/$${ARCH_LIB_DIR} -type l -xtype l); do \
 			LINKTARGET=`readlink $$i` ; \
 			NEWLINKTARGET=$${LINKTARGET\#$$relpath} ; \
+			if [ ! -e $$i ] ; then \
+				rm -f $$i ; \
+				continue ; \
+			fi ; \
 			ln -sf $${NEWLINKTARGET} $$i ; \
 			$(call simplify_symlink,$$i,$(STAGING_DIR)) ; \
 		done ; \
