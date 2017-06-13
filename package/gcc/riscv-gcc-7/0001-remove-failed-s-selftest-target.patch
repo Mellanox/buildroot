@@ -1,0 +1,12 @@
+diff -urN gcc.orig/gcc/Makefile.in gcc/gcc/Makefile.in
+--- gcc.orig/gcc/Makefile.in	2017-05-30 05:47:35.000000000 +0300
++++ gcc/gcc/Makefile.in	2017-06-12 17:43:22.140479147 +0300
+@@ -1908,7 +1908,7 @@
+ # Use "s-selftest" to ensure that we only run the selftests if the
+ # driver, cc1, or selftest data change.
+ .PHONY: selftest
+-selftest: s-selftest
++selftest: # s-selftest
+ s-selftest: $(GCC_PASSES) cc1$(exeext) stmp-int-hdrs \
+   $(srcdir)/testsuite/selftests
+ 	$(GCC_FOR_TARGET) $(SELFTEST_FLAGS)

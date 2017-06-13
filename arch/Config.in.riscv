@@ -7,3 +7,11 @@ config BR2_ENDIAN
 
 config BR2_READELF_ARCH_NAME
 	default "RISC-V"
+
+config BR2_GCC_TARGET_ARCH
+	default "rv32g"	if BR2_riscv32
+	default "rv64g"	if BR2_riscv64
+
+config BR2_GCC_TARGET_ABI
+	default "lp32d"	if BR2_riscv32
+	default "lp64d"	if BR2_riscv64

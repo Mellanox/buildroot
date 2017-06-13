@@ -9,6 +9,13 @@ GLIBC_SITE = $(BR2_GNU_MIRROR)/libc
 GLIBC_SOURCE = glibc-$(GLIBC_VERSION).tar.xz
 GLIBC_SRC_SUBDIR = .
 
+ifeq ($(BR2_riscv64),y)
+GLIBC_VERSION = riscv-next
+GLIBC_SITE = https://github.com/riscv/riscv-glibc.git
+GLIBC_SITE_METHOD = git
+GLIBC_SOURCE = glibc-$(GLIBC_VERSION).tar.gz
+endif
+
 GLIBC_LICENSE = GPL-2.0+ (programs), LGPL-2.1+, BSD-3-Clause, MIT (library)
 GLIBC_LICENSE_FILES = $(addprefix $(GLIBC_SRC_SUBDIR)/,COPYING COPYING.LIB LICENSES)
 
@@ -84,6 +91,7 @@ define GLIBC_CONFIGURE_CMDS
 		--enable-shared \
 		$(if $(BR2_SOFT_FLOAT),--without-fp,--with-fp) \
 		$(if $(BR2_x86_64),--enable-lock-elision) \
+		$(if $(BR2_riscv64),--disable-werror) \
 		--with-pkgversion="Buildroot" \
 		--without-cvs \
 		--disable-profile \

@@ -16,6 +16,12 @@ GCC_SOURCE = gcc-$(GCC_VERSION).tar.gz
 else ifeq ($(BR2_or1k),y)
 GCC_SITE = $(call github,openrisc,or1k-gcc,$(GCC_VERSION))
 GCC_SOURCE = gcc-$(GCC_VERSION).tar.gz
+else ifeq ($(BR2_riscv64),y)
+GCC_VERSION = riscv-gcc-7
+GCC_SITE = https://github.com/riscv/riscv-gcc.git
+HOST_GCC_INITIAL_SITE_METHOD = git
+GCC_SOURCE = gcc-$(GCC_VERSION).tar.gz
+BR_NO_CHECK_HASH_FOR += $(GCC_SOURCE)
 else
 GCC_SITE = $(BR2_GNU_MIRROR:/=)/gcc/gcc-$(GCC_VERSION)
 GCC_SOURCE = gcc-$(GCC_VERSION).tar.bz2
