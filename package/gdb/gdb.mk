@@ -20,6 +20,13 @@ GDB_SOURCE = gdb-$(GDB_VERSION).tar.gz
 GDB_FROM_GIT = y
 endif
 
+ifeq ($(BR2_riscv64),y)
+GDB_VERSION = riscv-binutils-2.28
+GDB_SITE = https://github.com/riscv/riscv-binutils-gdb.git
+GDB_SITE_METHOD = git
+GDB_SOURCE = gdb-$(GDB_VERSION).tar.gz
+endif
+
 GDB_LICENSE = GPL-2.0+, LGPL-2.0+, GPL-3.0+, LGPL-3.0+
 GDB_LICENSE_FILES = COPYING COPYING.LIB COPYING3 COPYING3.LIB
 
